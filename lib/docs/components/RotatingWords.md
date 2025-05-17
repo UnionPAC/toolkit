@@ -51,6 +51,7 @@
   staticTextAfter="and I love Vue."
   animation="slide-left"
   interval="2500"
+  wrapperClass="gap-1"
   wordClass="text-blue-600 font-bold"
 />
 
@@ -59,6 +60,7 @@
   :words="['Vue Dev', 'Tinkerer', 'Cat Dad']"
   animation="fade"
   interval="3000"
+  wrapperClass="gap-1"
   wordClass="text-emerald-500 font-semibold"
 >
   <template #before>
