@@ -4,6 +4,7 @@ import { dirname, resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import dts from 'vite-plugin-dts'
 import tailwindcss from '@tailwindcss/vite'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -14,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/index.js'),
-      name: 'MyToolkit',
-      fileName: 'my-toolkit',
+      name: 'Toolkit',
+      fileName: 'toolkit',
       formats: ['es', 'umd']
     },
     cssCodeSplit: true,
@@ -32,7 +33,8 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
-    tailwindcss()
+    tailwindcss(),
+    dts({ entryRoot: 'lib', outDir: 'dist/types' })
   ],
   resolve: {
     alias: {

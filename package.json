@@ -22,7 +22,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
+    "typescript": "^5.8.3",
     "vite": "^6.2.4",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-vue-devtools": "^7.7.2"
-  }
+  },
+  "types": "dist/types/index.d.ts"
 }
