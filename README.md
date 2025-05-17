@@ -1,29 +1,64 @@
-# vue-toolkit
+# 🧰 My Component Toolkit
 
-This template should help get you started developing with Vue 3 in Vite.
+Reusable Vue 3 components for building clean, flexible, and modern UIs.  
+Built with Tailwind-friendly class support and focused on simplicity, flexibility, and scalability.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📦 Installation
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+npm install my-component-toolkit
 ```
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
+## 🚀 Quick Usage
+
+Import and use any component:
+
+```js
+import { RotatingWords } from 'my-component-toolkit'
+```
+
+```vue
+<RotatingWords
+  staticTextBefore="I'm a"
+  :words="['Developer', 'Designer', 'Creator']"
+  staticTextAfter="and I love it."
+  animation="slide-left"
+/>
+```
+
+---
+
+## 📚 Documentation
+
+This package includes full documentation for each component.
+
+- [Component Index](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/index.md)
+- [RotatingWords Component](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/RotatingWords.md)
+
+---
+
+## 🧪 Local Development
+
+This repo includes a `/src` playground to test and iterate on components locally.  
+This is **not included** in the published npm package.
+
+```bash
+npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
+## 🛠️ License
+
+MIT
+
+---
+
+## 🙌 Contributing
+
+Feel free to submit issues or pull requests if you'd like to improve or add new components!
