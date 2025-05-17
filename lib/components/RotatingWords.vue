@@ -1,5 +1,5 @@
 <template>
-    <span :class="['inline-flex items-baseline', wrapperClass]" :style="wrapperStyle">
+    <span :class="['flex items-baseline', wrapperClass]" :style="wrapperStyle">
         <!-- Static text before the animated word -->
         <slot name="before">
            <span :class="beforeClass">{{  staticTextBefore }}</span>
@@ -102,7 +102,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 
 /* Slide up */
 .slide-up-enter-active, .slide-up-leave-active {
