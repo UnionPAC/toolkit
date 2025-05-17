@@ -1,11 +1,11 @@
 {
   "name": "@geoffjamieson/toolkit",
-  "version": "1.0.0",
-  "private": false,                      
+  "version": "1.0.1",
+  "private": false,
   "type": "module",
-  "main": "dist/my-toolkit.umd.cjs",     
-  "module": "dist/my-toolkit.js",      
-  "files": [                             
+  "main": "dist/my-toolkit.umd.cjs",
+  "module": "dist/my-toolkit.js",
+  "files": [
     "dist",
     "README.md",
     "LICENSE"
