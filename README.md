@@ -1,4 +1,4 @@
-# 🧰 My Component Toolkit
+# 🧰 @geoffjamieson/toolkit
 
 Reusable Vue 3 components for building clean, flexible, and modern UIs.  
 Built with Tailwind-friendly class support and focused on simplicity, flexibility, and scalability.
@@ -8,7 +8,7 @@ Built with Tailwind-friendly class support and focused on simplicity, flexibilit
 ## 📦 Installation
 
 ```bash
-npm install my-component-toolkit
+npm install @geoffjamieson/toolkit
 ```
 
 ---
@@ -18,7 +18,7 @@ npm install my-component-toolkit
 Import and use any component:
 
 ```js
-import { RotatingWords } from 'my-component-toolkit'
+import { RotatingWords } from '@geoffjamieson/toolkit'
 ```
 
 ```vue
