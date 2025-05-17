@@ -5,7 +5,6 @@
       :words="['Wizard', 'Climber', 'Designer']"
       static-text-after="and I love Vue."
       animation="slide-up"
-      :interval=2000
     />
   </main>
 </template>

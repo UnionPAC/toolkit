@@ -1,15 +1,15 @@
 <template>
-    <span :class="['flex items-baseline gap-1', wrapperClass]" :style="wrapperStyle">
+    <span :class="[wrapperClass]" :style="wrapperStyle">
         <!-- Static text before the animated word -->
         <slot name="before">
-           <span :class="['inline-block', beforeClass]">{{  staticTextBefore }}</span>
+           <span :class="[beforeClass]">{{  staticTextBefore }}{{ ' ' }}</span>
         </slot>
 
         <!-- Animated word with transition -->
         <transition :name="animationName" mode="out-in">
             <span
             :key="currentWord"
-            :class="['inline-flex', wordClass]"
+            :class="['inline-block', wordClass]"
             :style="wordStyle"
             >
                 {{ currentWord }}
@@ -18,7 +18,7 @@
 
         <!-- Static text after the animated word -->
          <slot name="after">
-           <span :class="['inline-block', afterClass]">{{  staticTextAfter }}</span>
+           <span :class="[afterClass]">{{' '}}{{  staticTextAfter }}</span>
         </slot>
     </span>
 </template>
