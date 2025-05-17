@@ -18,6 +18,7 @@ export default defineConfig({
       fileName: 'my-toolkit',
       formats: ['es', 'umd']
     },
+    cssCodeSplit: true,
     rollupOptions: {
       external: ['vue'],
       output: {
