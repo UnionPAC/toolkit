@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import dts from 'vite-plugin-dts'
 import tailwindcss from '@tailwindcss/vite'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -33,6 +34,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    cssInjectedByJsPlugin(),
     tailwindcss(),
     dts({ entryRoot: 'lib', outDir: 'dist/types' })
   ],
