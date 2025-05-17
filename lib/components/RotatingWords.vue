@@ -1,5 +1,5 @@
 <template>
-    <span :class="['flex items-baseline', wrapperClass]" :style="wrapperStyle">
+    <span :class="['flex items-baseline gap-1', wrapperClass]" :style="wrapperStyle">
         <!-- Static text before the animated word -->
         <slot name="before">
            <span :class="['inline-block', beforeClass]">{{  staticTextBefore }}</span>
