@@ -5,7 +5,7 @@
       :words="['Wizard', 'Climber', 'Designer']"
       staticTextAfter="and I love Vue."
       animation="slide-left"
-      interval="2000"
+      interval=2000
       wrapperClass="gap-1"
       wordClass="text-blue-500 font-bold"
     />
