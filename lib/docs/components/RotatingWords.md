@@ -11,6 +11,7 @@
 - 🧩 Works with props or named slots
 - 🎨 Fully customizable via class and style props
 - ✅ Tailwind-friendly and framework-agnostic
+- 📝 Fully typed with TypeScript
 
 ---
 
@@ -22,13 +23,13 @@
 | `staticTextBefore` | `string`           | `''`         | Static text before the animated word |
 | `staticTextAfter`  | `string`           | `''`         | Static text after the animated word |
 | `interval`         | `number`           | `2000`       | Time (in ms) between word changes |
-| `animation`        | `string`           | `'slide-up'` | Animation type: `fade`, `slide-up`, `slide-down`, `slide-left`, `slide-right` |
+| `animation`        | `'fade' \| 'slide-up' \| 'slide-down' \| 'slide-left' \| 'slide-right'` | `'slide-up'` | Animation type |
 | `wrapperClass`     | `string`           | `''`         | Class applied to the outer wrapper |
-| `wrapperStyle`     | `string \| object`| `''`         | Style applied to the wrapper |
+| `wrapperStyle`     | `string \| Record<string, string>` | `''` | Style applied to the wrapper |
 | `beforeClass`      | `string`           | `''`         | Class for the before-text span |
 | `afterClass`       | `string`           | `''`         | Class for the after-text span |
 | `wordClass`        | `string`           | `''`         | Class applied to the animated word |
-| `wordStyle`        | `string \| object`| `''`         | Style applied to the animated word |
+| `wordStyle`        | `string \| Record<string, string>` | `''` | Style applied to the animated word |
 
 ---
 
@@ -46,25 +47,25 @@
 ```vue
 <!-- ✅ Props-based usage (simple) -->
 <RotatingWords
-  staticTextBefore="I’m a"
+  staticTextBefore="I'm a"
   :words="['Wizard', 'Designer', 'Creator']"
   staticTextAfter="and I love Vue."
   animation="slide-left"
-  interval="2500"
-  wrapperClass="gap-1"
-  wordClass="text-blue-600 font-bold"
+  :interval="2500"
+  wrapper-class="gap-1"
+  word-class="text-blue-600 font-bold"
 />
 
 <!-- 🧩 Slot-based usage (custom layout) -->
 <RotatingWords
   :words="['Vue Dev', 'Tinkerer', 'Cat Dad']"
   animation="fade"
-  interval="3000"
-  wrapperClass="gap-1"
-  wordClass="text-emerald-500 font-semibold"
+  :interval="3000"
+  wrapper-class="gap-1"
+  word-class="text-emerald-500 font-semibold"
 >
   <template #before>
-    <span class="text-gray-600">Hello, I’m a</span>
+    <span class="text-gray-600">Hello, I'm a</span>
   </template>
   <template #after>
     <span class="italic text-gray-400">– nice to meet you!</span>
@@ -78,10 +79,12 @@
 
 ## 🧠 Notes
 
-- Animations use Vue’s `<transition>` component with scoped CSS classes.
-- The animated word is wrapped in `inline-block` for proper transition behavior.
-- If a slot is used (`#before`, `#after`), the corresponding `staticText` prop is ignored.
-- Tailwind and utility classes can be passed in via class props.
+- Animations use Vue's `<transition>` component with scoped CSS classes
+- The animated word is wrapped in `inline-block` for proper transition behavior
+- If a slot is used (`#before`, `#after`), the corresponding `staticText` prop is ignored
+- Tailwind and utility classes can be passed in via class props
+- All styles are scoped to prevent conflicts with other components
+- TypeScript types are included for better development experience
 
 ---
 
@@ -99,3 +102,4 @@
 - Props offer quick usage; slots enable full layout control
 - Avoid making `staticTextBefore`/`After` required, since slots may replace them
 - Use scoped transition class names to prevent global style bleed
+- All transitions are handled with CSS transforms for better performance

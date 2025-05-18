@@ -1,12 +1,10 @@
 <template>
     <span :class="[wrapperClass]" :style="wrapperStyle">
-        <!-- Static text before the animated word -->
         <slot name="before">
-           <span :class="[beforeClass]">{{  staticTextBefore }}{{ ' ' }}</span>
+           <span :class="[beforeClass]">{{ staticTextBefore }}&nbsp;</span>
         </slot>
 
-        <!-- Animated word with transition -->
-        <transition :name="animationName" mode="out-in">
+        <transition name="slide-up" mode="out-in" type="transition">
             <span
             :key="currentWord"
             :class="['inline-block', wordClass]"
@@ -16,62 +14,39 @@
             </span>
         </transition>
 
-        <!-- Static text after the animated word -->
          <slot name="after">
-           <span :class="[afterClass]">{{' '}}{{  staticTextAfter }}</span>
+           <span :class="[afterClass]">&nbsp;{{ staticTextAfter }}</span>
         </slot>
     </span>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useSlots } from 'vue';
 
-const props = defineProps({
-    words: {
-        type: Array,
-        required: true,
-        validator: (val) => val.every(item => typeof item === 'string')
-    },
-    staticTextBefore: {
-        type: String,
-    },
-    staticTextAfter: {
-        type: String,
-    },
-    interval: {
-        type: Number,
-        default: 2000
-    },
-    animation: {
-        type: String,
-        default: 'slide-up',
-        validator: (val) => ['fade', 'slide-up', 'slide-down', 'slide-left', 'slide-right'].includes(val)
-    },
-    wrapperClass: {
-        type: String,
-        default: ''
-    },
-    wrapperStyle: {
-        type: [String, Object],
-        default: ''
-    },
-    beforeClass: {
-        type: String,
-        default: '',
-    },
-    afterClass: {
-        type: String,
-        default: ''
-    },
-    wordClass: {
-        type: String,
-        default: ''
-    },
-    wordStyle: {
-        type: [String, Object],
-        default: ''
-    }
+interface Props {
+    words: string[];
+    staticTextBefore?: string;
+    staticTextAfter?: string;
+    interval?: number;
+    animation?: 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right';
+    wrapperClass?: string;
+    wrapperStyle?: string | Record<string, string>;
+    beforeClass?: string;
+    afterClass?: string;
+    wordClass?: string;
+    wordStyle?: string | Record<string, string>;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    interval: 2000,
+    animation: 'slide-up',
+    wrapperClass: '',
+    wrapperStyle: '',
+    beforeClass: '',
+    afterClass: '',
+    wordClass: '',
+    wordStyle: ''
 })
 
 const slots = useSlots()
@@ -80,10 +55,9 @@ const currentIndex = ref(0)
 const currentWord = computed(() => props.words[currentIndex.value])
 const animationName = computed(() => props.animation)
 
-let intervalId = null
+let intervalId: number | null = null
 
 onMounted(() => {
-
     if (!props.staticTextBefore && !slots.before) {
         console.warn('[TextSwitcher]: No staticTextBefore or <slot name="before"> provided.')
     }
@@ -92,47 +66,74 @@ onMounted(() => {
         console.warn('[TextSwitcher]: No staticTextAfter or <slot name="after"> provided.')
     }
 
-    intervalId = setInterval(() => {
+    intervalId = window.setInterval(() => {
         currentIndex.value = (currentIndex.value + 1) % props.words.length
     }, props.interval)
 })
 
 onUnmounted(() => {
-    clearInterval(intervalId)
+    if (intervalId) {
+        clearInterval(intervalId)
+    }
 })
 </script>
 
-<style>
-/* Fade */
-.fade-enter-active, .fade-leave-active { transition: opacity .4s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
-.fade-enter-to, .fade-leave-from { opacity: 1; }
+<style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active,
+.slide-down-enter-active,
+.slide-down-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active,
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.3s ease;
+}
 
-/* Slide Up */
-.slide-up-enter-active, .slide-up-leave-active { transition: transform .4s ease, opacity .4s ease; }
-.slide-up-enter-from { transform: translateY(100%); opacity: 0; }
-.slide-up-enter-to { transform: translateY(0); opacity: 1; }
-.slide-up-leave-from { transform: translateY(0); opacity: 1; }
-.slide-up-leave-to { transform: translateY(-100%); opacity: 0; }
+.slide-up-enter-from {
+    opacity: 0;
+    transform: translateY(20px);
+}
 
-/* Slide Down */
-.slide-down-enter-active, .slide-down-leave-active { transition: transform .4s ease, opacity .4s ease; }
-.slide-down-enter-from { transform: translateY(-100%); opacity: 0; }
-.slide-down-enter-to { transform: translateY(0); opacity: 1; }
-.slide-down-leave-from { transform: translateY(0); opacity: 1; }
-.slide-down-leave-to { transform: translateY(100%); opacity: 0; }
+.slide-up-leave-to {
+    opacity: 0;
+    transform: translateY(-20px);
+}
 
-/* Slide Left */
-.slide-left-enter-active, .slide-left-leave-active { transition: transform .4s ease, opacity .4s ease; }
-.slide-left-enter-from { transform: translateX(100%); opacity: 0; }
-.slide-left-enter-to { transform: translateX(0); opacity: 1; }
-.slide-left-leave-from { transform: translateX(0); opacity: 1; }
-.slide-left-leave-to { transform: translateX(-100%); opacity: 0; }
+.slide-down-enter-from {
+    opacity: 0;
+    transform: translateY(-20px);
+}
 
-/* Slide Right */
-.slide-right-enter-active, .slide-right-leave-active { transition: transform .4s ease, opacity .4s ease; }
-.slide-right-enter-from { transform: translateX(-100%); opacity: 0; }
-.slide-right-enter-to { transform: translateX(0); opacity: 1; }
-.slide-right-leave-from { transform: translateX(0); opacity: 1; }
-.slide-right-leave-to { transform: translateX(100%); opacity: 0; }
+.slide-down-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.slide-left-enter-from {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.slide-left-leave-to {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.slide-right-enter-from {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
 </style>

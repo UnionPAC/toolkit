@@ -6,7 +6,6 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import dts from 'vite-plugin-dts'
 import tailwindcss from '@tailwindcss/vite'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -14,7 +13,6 @@ const __dirname = dirname(__filename)
 // https://vite.dev/config/
 export default defineConfig({
   build: {
-    cssCodeSplit: false,
     lib: {
       entry: resolve(__dirname, 'lib/index.js'),
       name: 'Toolkit',
@@ -27,13 +25,12 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         },
-        exports: 'named'
+        exports: 'named',
       }
     }
   },
   plugins: [
     vue(),
-    cssInjectedByJsPlugin(),
     vueDevTools(),
     tailwindcss(),
     dts({ entryRoot: 'lib', outDir: 'dist/types' })
