@@ -14,13 +14,13 @@ const __dirname = dirname(__filename)
 // https://vite.dev/config/
 export default defineConfig({
   build: {
+    cssCodeSplit: false,
     lib: {
       entry: resolve(__dirname, 'lib/index.js'),
       name: 'Toolkit',
       fileName: 'toolkit',
       formats: ['es', 'umd']
     },
-    cssCodeSplit: false,
     rollupOptions: {
       external: ['vue'],
       output: {
@@ -33,9 +33,9 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    cssInjectedByJsPlugin(),
     vueDevTools(),
     tailwindcss(),
-    cssInjectedByJsPlugin(),
     dts({ entryRoot: 'lib', outDir: 'dist/types' })
   ],
   resolve: {

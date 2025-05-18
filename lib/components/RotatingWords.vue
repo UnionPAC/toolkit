@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import '../styles/animations.css'
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useSlots } from 'vue';
 
@@ -104,4 +103,36 @@ onUnmounted(() => {
 </script>
 
 <style>
+/* Fade */
+.fade-enter-active, .fade-leave-active { transition: opacity .4s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+.fade-enter-to, .fade-leave-from { opacity: 1; }
+
+/* Slide Up */
+.slide-up-enter-active, .slide-up-leave-active { transition: transform .4s ease, opacity .4s ease; }
+.slide-up-enter-from { transform: translateY(100%); opacity: 0; }
+.slide-up-enter-to { transform: translateY(0); opacity: 1; }
+.slide-up-leave-from { transform: translateY(0); opacity: 1; }
+.slide-up-leave-to { transform: translateY(-100%); opacity: 0; }
+
+/* Slide Down */
+.slide-down-enter-active, .slide-down-leave-active { transition: transform .4s ease, opacity .4s ease; }
+.slide-down-enter-from { transform: translateY(-100%); opacity: 0; }
+.slide-down-enter-to { transform: translateY(0); opacity: 1; }
+.slide-down-leave-from { transform: translateY(0); opacity: 1; }
+.slide-down-leave-to { transform: translateY(100%); opacity: 0; }
+
+/* Slide Left */
+.slide-left-enter-active, .slide-left-leave-active { transition: transform .4s ease, opacity .4s ease; }
+.slide-left-enter-from { transform: translateX(100%); opacity: 0; }
+.slide-left-enter-to { transform: translateX(0); opacity: 1; }
+.slide-left-leave-from { transform: translateX(0); opacity: 1; }
+.slide-left-leave-to { transform: translateX(-100%); opacity: 0; }
+
+/* Slide Right */
+.slide-right-enter-active, .slide-right-leave-active { transition: transform .4s ease, opacity .4s ease; }
+.slide-right-enter-from { transform: translateX(-100%); opacity: 0; }
+.slide-right-enter-to { transform: translateX(0); opacity: 1; }
+.slide-right-leave-from { transform: translateX(0); opacity: 1; }
+.slide-right-leave-to { transform: translateX(100%); opacity: 0; }
 </style>
