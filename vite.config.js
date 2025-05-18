@@ -34,8 +34,8 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
-    cssInjectedByJsPlugin(),
     tailwindcss(),
+    cssInjectedByJsPlugin(),
     dts({ entryRoot: 'lib', outDir: 'dist/types' })
   ],
   resolve: {
