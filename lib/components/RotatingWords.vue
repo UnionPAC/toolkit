@@ -4,11 +4,12 @@
            <span :class="[beforeClass]">{{ staticTextBefore }}&nbsp;</span>
         </slot>
 
-        <transition name="slide-up" mode="out-in" type="transition">
+        <transition :name="animationName" mode="out-in">
             <span
             :key="currentWord"
-            :class="['inline-block', wordClass]"
+            :class="['text-color-purple', wordClass]"
             :style="wordStyle"
+            style="display: inline-block;"
             >
                 {{ currentWord }}
             </span>
@@ -58,6 +59,9 @@ const animationName = computed(() => props.animation)
 let intervalId: number | null = null
 
 onMounted(() => {
+
+    console.log('still working?')
+
     if (!props.staticTextBefore && !slots.before) {
         console.warn('[TextSwitcher]: No staticTextBefore or <slot name="before"> provided.')
     }
@@ -78,62 +82,5 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active,
-.slide-down-enter-active,
-.slide-down-leave-active,
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active,
-.fade-enter-active,
-.fade-leave-active {
-    transition: all 0.3s ease;
-}
-
-.slide-up-enter-from {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.slide-up-leave-to {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-.slide-down-enter-from {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-.slide-down-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.slide-left-enter-from {
-    opacity: 0;
-    transform: translateX(20px);
-}
-
-.slide-left-leave-to {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-
-.slide-right-enter-from {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-
-.slide-right-leave-to {
-    opacity: 0;
-    transform: translateX(20px);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
+<style>
 </style>
