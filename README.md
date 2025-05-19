@@ -52,7 +52,8 @@ import { RotatingWords } from '@geoffjamieson/toolkit'
 Full documentation is available for each component.
 
 - [All Components](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/index.md)
-- [RotatingWords Component](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/RotatingWords.md)
+  - [RotatingWords](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/RotatingWords.md)
+  - [Modal](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/Modal.md)
 
 ---
 
