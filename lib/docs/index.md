@@ -10,6 +10,7 @@ All tools are designed to be lightweight, flexible, and easy to customize — es
 ## 🧩 Components
 
 - [RotatingWords](./components/RotatingWords.md)
+- [Modal](./components/Modal.md)
 
 ---
 
