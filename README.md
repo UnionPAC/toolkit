@@ -1,5 +1,7 @@
 # 🧰 @geoffjamieson/toolkit
 
+![Vue 3](https://img.shields.io/badge/vue-3.x-brightgreen.svg)
+
 Reusable Vue 3 components for building clean, flexible, and modern UIs.  
 Tailwind-friendly and built with simplicity, scalability, and customization in mind.
 
