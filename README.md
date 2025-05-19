@@ -1,7 +1,7 @@
 # 🧰 @geoffjamieson/toolkit
 
 Reusable Vue 3 components for building clean, flexible, and modern UIs.  
-Built with Tailwind-friendly class support and focused on simplicity, flexibility, and scalability.
+Tailwind-friendly and built with simplicity, scalability, and customization in mind.
 
 ---
 
@@ -10,6 +10,17 @@ Built with Tailwind-friendly class support and focused on simplicity, flexibilit
 ```bash
 npm install @geoffjamieson/toolkit
 ```
+
+---
+
+## 🎨 Import Styles
+
+To use built-in project styles like transitions and utility classes, you need to manually import the toolkit’s CSS file in your app entry point:
+
+```
+// main.js or main.ts
+import '@geoffjamieson/toolkit/dist/toolkit.css'
+``` 
 
 ---
 
@@ -34,9 +45,9 @@ import { RotatingWords } from '@geoffjamieson/toolkit'
 
 ## 📚 Documentation
 
-This package includes full documentation for each component.
+Full documentation is available for each component.
 
-- [Component Index](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/index.md)
+- [All Components](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/index.md)
 - [RotatingWords Component](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/RotatingWords.md)
 
 ---
@@ -44,18 +55,13 @@ This package includes full documentation for each component.
 ## 🧪 Local Development
 
 This repo includes a `/src` playground to test and iterate on components locally.  
-This is **not included** in the published npm package.
+
+⚠️ The /src playground is for local development only and is not included in the published npm package.
 
 ```bash
 npm install
 npm run dev
 ```
-
----
-
-## 🛠️ License
-
-MIT
 
 ---
 

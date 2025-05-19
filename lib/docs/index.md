@@ -1,11 +1,24 @@
-# 📚 Component Documentation
+# 📚 Documentation
 
-Welcome to the documentation for `my-component-lib`.
+Welcome to the documentation for `@geoffjamieson/toolkit`.
 
-This library provides reusable, flexible Vue components designed to be lightweight and customizable.
+This toolkit currently includes reusable Vue 3 components, with plans to expand into animations, utilities, and more.  
+All tools are designed to be lightweight, flexible, and easy to customize — especially with Tailwind CSS.
 
 ---
 
-## Components
+## 🧩 Components
 
 - [RotatingWords](./components/RotatingWords.md)
+
+---
+
+## 🎞️ Animations
+
+_Coming soon_
+
+---
+
+## 🛠️ Utilities
+
+_Coming soon_

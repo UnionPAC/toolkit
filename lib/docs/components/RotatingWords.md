@@ -1,6 +1,6 @@
 # 🔤 RotatingWords
 
-`RotatingWords` is a flexible Vue 3 component that displays a rotating word or phrase with animated transitions. It's perfect for adding dynamic flair to headlines, taglines, or intros.
+`RotatingWords` is a flexible Vue 3 component that displays a rotating word or phrase with animated transitions.
 
 ---
 
@@ -20,8 +20,8 @@
 | Prop               | Type               | Default      | Description |
 |--------------------|--------------------|--------------|-------------|
 | `words`            | `string[]`         | **Required** | List of rotating words or phrases |
-| `staticTextBefore` | `string`           | `''`         | Static text before the animated word |
-| `staticTextAfter`  | `string`           | `''`         | Static text after the animated word |
+| `staticTextBefore` | `string`           | `''`         | 	Static text before the animated word (ignored if `#before` slot is used) |
+| `staticTextAfter`  | `string`           | `''`         | Static text after the animated word (ignored if `#after` slot is used) |
 | `interval`         | `number`           | `2000`       | Time (in ms) between word changes |
 | `animation`        | `'fade' \| 'slide-up' \| 'slide-down' \| 'slide-left' \| 'slide-right'` | `'slide-up'` | Animation type |
 | `wrapperClass`     | `string`           | `''`         | Class applied to the outer wrapper |
@@ -40,6 +40,8 @@
 | `before` | Replaces `staticTextBefore` prop |
 | `after`  | Replaces `staticTextAfter` prop  |
 
+If a named slot (`#before` or `#after`) is provided, the corresponding `staticTextBefore` or `staticTextAfter` prop will not be shown.
+
 ---
 
 ## 🚀 Examples
@@ -52,7 +54,6 @@
   staticTextAfter="and I love Vue."
   animation="slide-left"
   :interval="2500"
-  wrapper-class="gap-1"
   word-class="text-blue-600 font-bold"
 />
 
@@ -61,7 +62,6 @@
   :words="['Vue Dev', 'Tinkerer', 'Cat Dad']"
   animation="fade"
   :interval="3000"
-  wrapper-class="gap-1"
   word-class="text-emerald-500 font-semibold"
 >
   <template #before>
@@ -79,12 +79,19 @@
 
 ## 🧠 Notes
 
-- Animations use Vue's `<transition>` component with scoped CSS classes
-- The animated word is wrapped in `inline-block` for proper transition behavior
-- If a slot is used (`#before`, `#after`), the corresponding `staticText` prop is ignored
-- Tailwind and utility classes can be passed in via class props
+- Transitions use Vue's `<transition>` component with dynamic `:name` bound to the `animation` prop
+
+- The animated word uses a dynamic `:key="currentWord"` to ensure transition triggers on change
+
+- The animated word is wrapped in `inline-block` to ensure transition effects apply correctly
+
+- Transition duration is fixed at `0.3s` — customization can be added later if needed
+
 - All styles are scoped to prevent conflicts with other components
-- TypeScript types are included for better development experience
+
+- Tailwind and other utility classes are supported via props
+
+- Fully typed with TypeScript for great DX
 
 ---
 
@@ -94,12 +101,18 @@
 - `pauseOnHover` support
 - `loop: false` to stop after one full cycle
 - `startIndex` prop to control the initial word
+- Custom transition duration (e.g. via a duration prop instead of hardcoded 0.3s) ✅
 
 ---
 
 ## 🛠️ Maintainer Tips
 
 - Props offer quick usage; slots enable full layout control
-- Avoid making `staticTextBefore`/`After` required, since slots may replace them
-- Use scoped transition class names to prevent global style bleed
-- All transitions are handled with CSS transforms for better performance
+
+- Use `:name="animation"` in the `<transition>` to support multiple animation styles
+
+- Avoid making `staticTextBefore` / `staticTextAfter` required — they can be replaced with slots
+
+- Keep transition classes scoped to avoid global style bleed
+
+- Use inline styles or class props to customize layout and animation appearance
