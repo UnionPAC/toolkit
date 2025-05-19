@@ -6,6 +6,13 @@
   "main": "dist/toolkit.umd.cjs",
   "module": "dist/toolkit.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/toolkit.js",
+      "require": "./dist/toolkit.umd.cjs"
+    },
+    "./dist/toolkit.css": "./dist/toolkit.css"
+  },
   "files": [
     "dist",
     "README.md",
@@ -27,5 +34,8 @@
     "vite": "^6.2.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-vue-devtools": "^7.7.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   }
 }
