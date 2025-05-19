@@ -101,7 +101,7 @@ If a named slot (`#before` or `#after`) is provided, the corresponding `staticTe
 - `pauseOnHover` support
 - `loop: false` to stop after one full cycle
 - `startIndex` prop to control the initial word
-- Custom transition duration (e.g. via a duration prop instead of hardcoded 0.3s) ✅
+- Custom transition duration (e.g. via a duration prop instead of hardcoded 0.3s)
 
 ---
 

@@ -3,7 +3,9 @@
 ![Vue 3](https://img.shields.io/badge/vue-3.x-brightgreen.svg)
 
 Reusable Vue 3 components for building clean, flexible, and modern UIs.  
-Tailwind-friendly and built with simplicity, scalability, and customization in mind.
+
+This toolkit currently includes UI components, with plans to expand into animations, utilities, and more. All tools are lightweight, customizable, and Tailwind-friendly by design.
+
 
 ---
 
