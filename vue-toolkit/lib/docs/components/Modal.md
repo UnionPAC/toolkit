@@ -47,7 +47,7 @@
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { Modal } from '@geoffjamieson/toolkit'
+import { Modal } from 'geoffjamieson/vue-toolkit'
 
 const isOpen = ref(false)
 </script>

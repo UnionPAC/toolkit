@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/index.js'),
-      name: 'Toolkit',
-      fileName: 'toolkit',
+      name: 'VueToolkit',
+      fileName: 'vue-toolkit',
       formats: ['es', 'umd']
     },
     rollupOptions: {

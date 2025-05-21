@@ -1,41 +1,13 @@
 {
-  "name": "@geoffjamieson/toolkit",
-  "version": "1.2.1",
-  "private": false,
-  "type": "module",
-  "main": "dist/toolkit.umd.cjs",
-  "module": "dist/toolkit.js",
-  "types": "dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/toolkit.js",
-      "require": "./dist/toolkit.umd.cjs"
-    },
-    "./dist/toolkit.css": "./dist/toolkit.css"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
+  "name": "toolkit",
+  "private": true,
+  "workspaces": [
+    "vue-toolkit",
+    "react-toolkit"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.7",
-    "tailwindcss": "^4.1.7",
-    "vue": "^3.5.13"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.3",
-    "typescript": "^5.8.3",
-    "vite": "^6.2.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vite-plugin-vue-devtools": "^7.7.2"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.0"
+    "build:all": "npm workspaces run build",
+    "dev:vue": "npm run dev -w vue-toolkit",
+    "dev:react": "npm run dev -w react-toolkit"
   }
 }

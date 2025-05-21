@@ -1,6 +1,6 @@
 # 📚 Documentation
 
-Welcome to the documentation for `@geoffjamieson/toolkit`.
+Welcome to the documentation for `@geoffjamieson/vue-toolkit`.
 
 This toolkit currently includes reusable Vue 3 components, with plans to expand into animations, utilities, and more.  
 All tools are designed to be lightweight, flexible, and easy to customize — especially with Tailwind CSS.
