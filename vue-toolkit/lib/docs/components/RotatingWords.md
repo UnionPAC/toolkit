@@ -1,6 +1,6 @@
 # 🔤 RotatingWords
 
-`RotatingWords` is a flexible Vue 3 component that displays a rotating word or phrase with animated transitions.
+`RotatingWords` is a flexible Vue 3 component from `@geoffjamieson/vue-toolkit` that displays a rotating word or phrase with animated transitions.
 
 ---
 
@@ -20,7 +20,7 @@
 | Prop               | Type               | Default      | Description |
 |--------------------|--------------------|--------------|-------------|
 | `words`            | `string[]`         | **Required** | List of rotating words or phrases |
-| `staticTextBefore` | `string`           | `''`         | 	Static text before the animated word (ignored if `#before` slot is used) |
+| `staticTextBefore` | `string`           | `''`         | Static text before the animated word (ignored if `#before` slot is used) |
 | `staticTextAfter`  | `string`           | `''`         | Static text after the animated word (ignored if `#after` slot is used) |
 | `interval`         | `number`           | `2000`       | Time (in ms) between word changes |
 | `animation`        | `'fade' \| 'slide-up' \| 'slide-down' \| 'slide-left' \| 'slide-right'` | `'slide-up'` | Animation type |
@@ -47,33 +47,50 @@ If a named slot (`#before` or `#after`) is provided, the corresponding `staticTe
 ## 🚀 Examples
 
 ```vue
-<!-- ✅ Props-based usage (simple) -->
-<RotatingWords
-  staticTextBefore="I'm a"
-  :words="['Wizard', 'Designer', 'Creator']"
-  staticTextAfter="and I love Vue."
-  animation="slide-left"
-  :interval="2500"
-  word-class="text-blue-600 font-bold"
-/>
+<script setup>
+import { RotatingWords } from '@geoffjamieson/vue-toolkit'
+</script>
 
-<!-- 🧩 Slot-based usage (custom layout) -->
-<RotatingWords
-  :words="['Vue Dev', 'Tinkerer', 'Cat Dad']"
-  animation="fade"
-  :interval="3000"
-  word-class="text-emerald-500 font-semibold"
->
-  <template #before>
-    <span class="text-gray-600">Hello, I'm a</span>
-  </template>
-  <template #after>
-    <span class="italic text-gray-400">– nice to meet you!</span>
-  </template>
-</RotatingWords>
+<template>
+  <!-- ✅ Props-based usage (simple) -->
+  <RotatingWords
+    staticTextBefore="I'm a"
+    :words="['Wizard', 'Designer', 'Creator']"
+    staticTextAfter="and I love Vue."
+    animation="slide-left"
+    :interval="2500"
+    word-class="text-blue-600 font-bold"
+  />
+
+  <!-- 🧩 Slot-based usage (custom layout) -->
+  <RotatingWords
+    :words="['Vue Dev', 'Tinkerer', 'Cat Dad']"
+    animation="fade"
+    :interval="3000"
+    word-class="text-emerald-500 font-semibold"
+  >
+    <template #before>
+      <span class="text-gray-600">Hello, I'm a</span>
+    </template>
+    <template #after>
+      <span class="italic text-gray-400">– nice to meet you!</span>
+    </template>
+  </RotatingWords>
+</template>
 ```
 
 💡 Use slots if you want to inject custom HTML, apply more complex layouts, or style different parts of the sentence independently.
+
+---
+
+## 🎨 Required Styles
+
+To enable built-in transitions and utility styles, add this to your main entry file:
+
+```
+// main.js or main.ts
+import '@geoffjamieson/vue-toolkit/dist/vue-toolkit.css'
+```
 
 ---
 
@@ -113,6 +130,8 @@ If a named slot (`#before` or `#after`) is provided, the corresponding `staticTe
 
 - Avoid making `staticTextBefore` / `staticTextAfter` required — they can be replaced with slots
 
-- Keep transition classes scoped to avoid global style bleed
+- Leave styling and animation flexibility to the user
 
-- Use inline styles or class props to customize layout and animation appearance
+- `wrapperClass` and `wordClass` are the main style hooks
+
+← [Back to Documentation Index](../index.md)

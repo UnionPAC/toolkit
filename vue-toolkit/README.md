@@ -3,9 +3,9 @@
 ![Vue 3](https://img.shields.io/badge/vue-3.x-brightgreen.svg)
 
 Reusable Vue 3 components for building clean, flexible, and modern UIs.  
+All tools are lightweight, customizable, and Tailwind-friendly by design.
 
-This toolkit currently includes UI components, with plans to expand into animations, utilities, and more. All tools are lightweight, customizable, and Tailwind-friendly by design.
-
+This toolkit currently includes unstyled UI components, with plans to expand into animations, utilities, and more.
 
 ---
 
@@ -19,7 +19,7 @@ npm install @geoffjamieson/vue-toolkit
 
 ## 🎨 Import Styles
 
-To use built-in project styles like transitions and utility classes, you need to manually import the toolkit’s CSS file in your app entry point:
+To use built-in styles like transitions and utility classes, manually import the toolkit’s CSS in your app’s entry file:
 
 ```
 // main.js or main.ts
@@ -33,7 +33,7 @@ import '@geoffjamieson/vue-toolkit/dist/vue-toolkit.css'
 Import and use any component:
 
 ```js
-import { RotatingWords } from 'geoffjamieson/vue-toolkit'
+import { RotatingWords } from '@geoffjamieson/vue-toolkit'
 ```
 
 ```vue
@@ -51,9 +51,9 @@ import { RotatingWords } from 'geoffjamieson/vue-toolkit'
 
 Full documentation is available for each component.
 
-- [All Components](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/index.md)
-  - [RotatingWords](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/RotatingWords.md)
-  - [Modal](https://github.com/UnionPAC/toolkit/blob/main/lib/docs/components/Modal.md)
+- [All Components](https://github.com/UnionPAC/toolkit/blob/main/vue-toolkit/lib/docs/index.md)
+  - [RotatingWords](https://github.com/UnionPAC/toolkit/blob/main/vue-toolkit/lib/docs/components/RotatingWords.md)
+  - [Modal](https://github.com/UnionPAC/toolkit/blob/main/vue-toolkit/lib/docs/components/Modal.md)
 
 ---
 

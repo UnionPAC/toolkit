@@ -1,6 +1,6 @@
 # 🪟 Modal
 
-`Modal` is a headless, logic-only Vue 3 component that handles open/close logic, Escape key handling, and backdrop clicks. It uses Vue’s `<teleport>` to render its content into `<body>`, while giving you full control over structure and styles.
+`Modal` is a headless, logic-only Vue 3 component from `@geoffjamieson/vue-toolkit` that handles open/close logic, `Escape` key handling, and backdrop clicks. It uses Vue’s `<teleport>` to render content into `<body>`, while giving you full control over structure and styling.
 
 ---
 
@@ -28,8 +28,8 @@
 
 ## 🎤 Events
 
-| Event   | Description                                   |
-|---------|-----------------------------------------------|
+| Event   | Description                                        |
+|---------|----------------------------------------------------|
 | `close` | Emitted when user clicks backdrop or presses Escape |
 
 ---
@@ -47,7 +47,7 @@
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { Modal } from 'geoffjamieson/vue-toolkit'
+import { Modal } from '@geoffjamieson/vue-toolkit'
 
 const isOpen = ref(false)
 </script>
@@ -68,22 +68,36 @@ const isOpen = ref(false)
   </Modal>
 </template>
 ```
+---
+
+## 🎨 Required Styles
+
+To enable built-in transitions and utility styles, add this to your main entry file:
+
+```
+// main.js or main.ts
+import '@geoffjamieson/vue-toolkit/dist/vue-toolkit.css'
+```
+
+---
 
 ## 🧠 Notes
 
-- The modal's outer wrapper is rendered by the component — style it using wrapperClass
+- The modal's outer wrapper is rendered by the component — style it using `wrapperClass`
 
-- The wrapper listens for @click.self to detect backdrop clicks
+- The wrapper listens for `@click.self` to detect backdrop clicks
 
-- The component uses <teleport to="body"> to avoid layout or z-index conflicts
+- The component uses `<teleport to="body">` to avoid layout or z-index conflicts
 
-- No transitions, scroll locking, focus trap, or styling are included — you’re in full control
+- This component does not include transitions by default — feel free to apply your own using `<transition>`. You can also use the utility classes from `vue-toolkit.css` for styling.
+
+- No scroll locking, focus trap, or baked-in styles are included — you’re in full control
 
 ---
 
 ## 🔮 Future Enhancements (Ideas)
 
-- v-model:open support for two-way binding
+- `v-model:open` support for two-way binding
 
 - Focus trap + return focus on close
 
@@ -97,10 +111,12 @@ const isOpen = ref(false)
 
 ## 🛠️ Maintainer Tips
 
-- Keep the modal behavior-driven and unstyled
+- Keep the modal logic-driven and unstyled
 
-- Let the user define backdrop color, padding, layout, etc.
+- Leave styling, positioning, and accessibility to the user
 
-- `wrapperClass` is the main way to control visual behavior
+- wrapperClass is the main way to control modal layout and behavior
 
-- Avoid baked-in styles to stay framework-agnostic
+- No transitions are included by design — use your own as needed
+
+← [Back to Documentation Index](../index.md)
