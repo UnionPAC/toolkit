@@ -60,8 +60,6 @@ let intervalId: number | null = null
 
 onMounted(() => {
 
-    console.log('still working?')
-
     if (!props.staticTextBefore && !slots.before) {
         console.warn('[TextSwitcher]: No staticTextBefore or <slot name="before"> provided.')
     }

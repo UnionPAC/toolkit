@@ -1,15 +1,19 @@
 <template>
-  <main class="m-2">
-    <p class="text-2xl font-bold mb-4">toolkit</p>
+  <main class="m-2 flex flex-col gap-6">
+    <h1 class="text-4xl font-bold">vue toolkit</h1>
     <div>
-      <RotatingWords
-        static-text-before="I'm a"
-        :words="['Wizard', 'Climber', 'Designer']"
-        static-text-after="and I love Vue."
-      />
+      <h2 className="text-xl font-bold mb-2">Rotating Words</h2>
+      <div>
+        <RotatingWords
+          static-text-before="I'm a"
+          :words="['Wizard', 'Climber', 'Designer']"
+          static-text-after="and I love Vue."
+        />
+      </div>
     </div>
     <div>
-      <button @click="isOpen = true">Open Modal</button>
+      <h2 className="text-xl font-bold mb-2">Modal</h2>
+      <button class=" bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded cursor-pointer active:scale-95" @click="isOpen = true">Open Modal</button>
       <Modal
         :open="isOpen"
         @close="isOpen = false"
